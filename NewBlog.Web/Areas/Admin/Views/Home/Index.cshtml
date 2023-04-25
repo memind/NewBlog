@@ -1,0 +1,66 @@
+﻿@model List<ArticleDto>
+
+<div class="row mx-2">
+    <h4 class="fw-bold py-3 mb-4">
+        <span class="text-muted fw-light">Admin Area /</span> Dashboard
+    </h4>
+</div>
+
+<div class="row mx-2">
+    <div class="col-12 col-lg-6 order-2 order-md-3 order-lg-2 mt-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+
+                    <i style="height:30px; font-size:2.25rem" class="menu-icon bx bx-paper-plane"></i>
+                </div>
+                <span class="fw-semibold d-block mb-1">
+                    Total Number of <br /> Published Articles
+                </span>
+                <h3 class="card-title mb-2" id="totalArticleCount"></h3>
+                <small class="text-success fw-semibold"></small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-6 order-2 order-md-3 order-lg-2 mt-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <i style="height:30px; font-size:2.25rem" class="menu-icon bx bx-category"></i>
+
+                </div>
+                <span class="fw-semibold d-block mb-1">
+                    Total Number of <br /> Added Categories
+                </span>
+                <h3 class="card-title text-nowrap mb-1" id="totalCategoryCount"></h3>
+                <small class="text-success fw-semibold"></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mx-2">
+    <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mt-4">
+        <div class="card">
+            <div class="row row-bordered g-0">
+                <div class="col-md-12">
+                    <h5 class="card-header m-0 me-2 pb-3">Article Analysis of @DateTime.Now.Year</h5>
+                    <div id="articleAnalysis" class="px-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/dashboardIndex.js"></script>
+    <script>
+        var app = app || {}
+        app.Urls = app.Urls || {}
+
+        app.Urls.yearlyArticlesUrl = "@(Url.Action("YearlyArticleCounts", "Home"))";
+        app.Urls.totalArticleCountUrl = "@(Url.Action("TotalArticleCount", "Home"))";
+        app.Urls.totalCategoryCountUrl = "@(Url.Action("TotalCategoryCount", "Home"))";
+    </script>
+}
